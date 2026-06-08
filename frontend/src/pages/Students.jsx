@@ -8,6 +8,8 @@ export default function Students() {
 
   useEffect(() => {
     localStorage.setItem('listaAlunos', JSON.stringify(alunos));
+    // Dispara evento para o Dashboard atualizar em tempo real
+    window.dispatchEvent(new Event('storage'));
   }, [alunos]);
 
   const handleAddAluno = () => {
@@ -22,10 +24,10 @@ export default function Students() {
   };
 
   return (
-    <div style={{ padding: '30px', backgroundColor: '#f8fafc', minHeight: '100vh' }}>
+    <div style={{ padding: '30px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <h1>Gestão de Alunos</h1>
-        <button onClick={handleAddAluno} style={{ backgroundColor: '#2563eb', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer' }}>
+        <button onClick={handleAddAluno} style={{ padding: '10px 20px', backgroundColor: '#2563eb', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer' }}>
           + Novo Aluno
         </button>
       </div>
