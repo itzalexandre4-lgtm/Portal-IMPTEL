@@ -1,10 +1,10 @@
 import React from 'react';
-import Dashboard from './components/UniversityDashboard'; // Confirma se este ficheiro ainda tem o código
+import UniversityDashboard from './components/UniversityDashboard';
 
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      <UniversityDashboard />
     </div>
   );
 }
