@@ -1,5 +1,5 @@
 import React from 'react';
-import Dashboard from './components/UniversityDashboard'; // Certifica-te de que este caminho está correto
+import Dashboard from './components/UniversityDashboard'; // Confirma se este ficheiro ainda tem o código
 
 function App() {
   return (
