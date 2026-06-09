@@ -3,33 +3,32 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const performanceData = [
-  { name: 'Jan', value: 12 }, { name: 'Fev', value: 15 }, { name: 'Mar', value: 11 },
-  { name: 'Abr', value: 22 }, { name: 'Mai', value: 18 }, { name: 'Jun', value: 24 }
+const data = [
+  { name: 'Jan', value: 10 }, { name: 'Fev', value: 20 }, { name: 'Mar', value: 15 },
+  { name: 'Abr', value: 25 }, { name: 'Mai', value: 30 }, { name: 'Jun', value: 35 }
 ];
 
-export default function Dashboard() {
-  const [stats, setStats] = useState({ total: 0, cursos: 0 });
-
-  useEffect(() => {
-    const saved = localStorage.getItem('listaAlunos');
-    const alunos = saved ? JSON.parse(saved) : [];
-    setStats({
-      total: alunos.lengtha,
-      cursos: new Set(alunos.map(a => a.curso)).size
-    });
-  }, []);
-
+export default function UniversityDashboard() {
   return (
-    <div style={{ padding: '30px', backgroundColor: '#f9fafb', minHeight: '100vh', fontFamily: 'sans-serif' }}>
+    <div style={{ padding: '40px', backgroundColor: '#f3f4f6', minHeight: '100vh' }}>
       <h1>Painel de Controlo</h1>
-      <div style={{ display: 'flex', gap: '20px', marginBottom: '30px' }}>
-        <div style={{ padding: '20px', background: '#3b82f6', color: 'white', borderRadius: '12px' }}>
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <div style={{ background: '#2563eb', color: 'white', padding: '20px', borderRadius: '10px' }}>
           <h3>Total de Alunos</h3>
-          <p style={{ fontSize: '32px' }}>{stats.total}</p>
+          <p style={{ fontSize: '24px' }}>124</p>
         </div>
       </div>
-      {/* Restante do código dos gráficos aqui */}
+      <div style={{ marginTop: '20px', background: 'white', padding: '20px' }}>
+        <ResponsiveContainer width="100%" height={300}>
+          <AreaChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Area type="monotone" dataKey="value" stroke="#2563eb" fill="#bfdbfe" />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }
